@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Web Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <i class="ri-spotify-fill" style="font-size: 28px;"></i>
+        <span>Spotify</span>
+      </div>
+      <nav class="nav">
+        <a href="#" class="nav-item nav-active"><i class="ri-home-5-fill"></i> Home</a>
+        <a href="#" class="nav-item"><i class="ri-search-line"></i> Search</a>
+        <a href="#" class="nav-item"><i class="ri-book-mark-fill"></i> Your Library</a>
+      </nav>
+      <div class="nav" style="margin-top: 24px;">
+        <a href="#" class="nav-item"><i class="ri-add-box-fill"></i> Create Playlist</a>
+        <a href="#" class="nav-item"><i class="ri-heart-fill"
+            style="background: linear-gradient(135deg, #450af5, #c4efd9); color: white; border-radius: 2px; padding: 2px;"></i>
+          Liked Songs</a>
+      </div>
+      <hr class="divider">
+      <div class="playlist-box">
+        <p>Daily Mix 1</p>
+        <p>Discover Weekly</p>
+        <p>Release Radar</p>
+        <p>Chill Vibes</p>
+        <p>Coding Session</p>
+      </div>
+    </aside>
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+    <!-- Main Content -->
+    <main class="main-panel">
+      <div class="main-scroll" id="main-scroll">
+      <!-- Topbar -->
+      <header class="topbar" id="topbar">
+        <div class="topbar-left">
+          <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+            <i class="ri-menu-line"></i>
+          </button>
+          <div class="nav-arrows">
+            <button type="button" class="arrow-btn" aria-label="Go back"><i class="ri-arrow-left-s-line"></i></button>
+            <button type="button" class="arrow-btn" aria-label="Go forward"><i class="ri-arrow-right-s-line"></i></button>
+          </div>
+        </div>
+        <div class="user-profile">
+          <button class="upgrade-btn">Upgrade</button>
+          <div class="profile-badge">
+            <i class="ri-user-line"></i>
+            <span>T.Sathwika</span>
+            <i class="ri-arrow-down-s-fill"></i>
+          </div>
+        </div>
+      </header>
+      <!-- Hero Section -->
+      <section class="hero">
+        <img src="" id="hero-cover" class="cover-art" alt="Playlist Cover">
+        <div class="hero-info">
+          <span>Playlist</span>
+          <h1 id="hero-title">My Awesome Mix</h1>
+          <p class="description">Spotify-inspired premium music player.</p>
+          <div class="hero-meta">
+            <i class="ri-spotify-fill" style="color: #1ed760;"></i>
+            <strong>Spotify</strong> • <span id="track-count"></span> songs
+          </div>
+        </div>
+      </section>
+      <!-- Playlist Controls -->
+      <section class="controls">
+        <button id="hero-play" class="play-big" aria-label="Play"><i class="ri-play-fill"></i></button>
+        <button class="icon-btn" style="font-size: 32px;"><i class="ri-heart-line"></i></button>
+        <button class="icon-btn"><i class="ri-more-fill"></i></button>
+      </section>
+      <!-- Tracklist Table -->
+      <section class="table-wrap">
+        <div class="table-head">
+          <span style="text-align: center;">#</span>
+          <span>Title</span>
+          <span>Album</span>
+          <span>Date added</span>
+          <span style="text-align: center;"><i class="ri-time-line"></i></span>
+        </div>
+        <div class="divider" style="margin: 0 0 16px 0;"></div>
+        <div id="track-list" class="track-list"></div>
+      </section>
+      </div>
+    </main>
+  </div>
+  <nav class="mobile-tabbar" aria-label="Primary">
+    <a href="#" class="mobile-tab mobile-tab-active"><i class="ri-home-5-fill"></i><span>Home</span></a>
+    <a href="#" class="mobile-tab"><i class="ri-search-line"></i><span>Search</span></a>
+    <a href="#" class="mobile-tab"><i class="ri-book-mark-line"></i><span>Library</span></a>
+  </nav>
+  <!-- Now Playing Player -->
+  <footer class="player">
+    <div class="now-playing">
+      <img src="" id="mini-cover" class="mini-cover hidden" alt="Cover">
+      <div class="now-playing-info hidden" id="now-playing-info">
+        <div class="scrolling-text">
+          <p id="now-title" class="title">Select a song</p>
+        </div>
+        <p id="now-artist" class="artist">-</p>
+      </div>
+      <button class="icon-btn hidden" id="now-heart" style="margin-left: 12px;"><i class="ri-heart-line"></i></button>
+    </div>
+    <div class="player-center">
+      <div class="player-buttons">
+        <button class="icon-btn"><i class="ri-shuffle-line"></i></button>
+        <button id="prev-btn" class="icon-btn"><i class="ri-skip-back-fill"></i></button>
+        <button id="play-btn" class="play-circle"><i class="ri-play-fill"></i></button>
+        <button id="next-btn" class="icon-btn"><i class="ri-skip-forward-fill"></i></button>
+        <button class="icon-btn"><i class="ri-repeat-2-line"></i></button>
+      </div>
+      <div class="progress-row">
+        <span id="current-time">0:00</span>
+        <input id="seek-bar" type="range" min="0" max="100" value="0">
+        <span id="total-time">0:00</span>
+      </div>
+    </div>
+    <div class="volume-wrap">
+      <button class="icon-btn"><i class="ri-mic-line"></i></button>
+      <button class="icon-btn"><i class="ri-play-list-2-line"></i></button>
+      <button class="icon-btn"><i class="ri-computer-line"></i></button>
+      <div class="volume-control">
+        <i class="ri-volume-up-line" id="volume-icon"></i>
+        <input id="volume-bar" type="range" min="0" max="100" value="100">
+      </div>
+    </div>
+  </footer>
+  <audio id="audio"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
