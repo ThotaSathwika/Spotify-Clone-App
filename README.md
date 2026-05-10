@@ -22,8 +22,8 @@ A modern and responsive Spotify Clone built to replicate the immersive experienc
 - HTML5
 - CSS3
 - JavaScript
-- React.js *(if used)*
-- Tailwind CSS *(if used)*
+- React.js 
+- Tailwind CSS 
 
 ---
 
